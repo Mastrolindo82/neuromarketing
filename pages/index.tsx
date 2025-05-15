@@ -1,115 +1,190 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { Button} from "@/components/button";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
-  return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+   return (
+    <>
+    <Navbar/>
+    <main className="font-sans">
+      {/* Hero Section */}
+      {/* <section className="relative h-screen text-white flex items-center justify-center text-center">
+        <img
+          src="/hero-background.jpg"
+          alt="Hero Background"
+          className="absolute inset-0 w-full h-full object-cover z-0"
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="z-10 bg-black bg-opacity-60 p-8 rounded-xl">
+          <h1 className="text-5xl font-bold">NeuroScelte</h1>
+          <p className="text-xl mt-4">Scopri come il tuo cervello influenza le decisioni di acquisto</p>
+          <button className="mt-8 bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600">Inizia ora</button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section> */}
+<section className="relative h-screen text-white flex items-center justify-center text-center ">
+   <section className="absolute inset-0 w-full h-full overflow-hidden bg-gray-300">
+   <motion.div
+      className="absolute top-0 left-0 w-full h-full flex over flow-hidden"
+      initial={{ x: 0 }}
+      animate={{ x: "-100%" }}
+    transition={{
+      duration: 10,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+  >
+    {/* Ripetizione della stessa immagine */}
+    {[...Array(3)].map((_, index) => (
+      <img
+        key={index}
+        src="/hero-image.svg"
+        alt={`Hero  ${index + 1}`}
+        className="w-full h-full object-cover flex-shrink-0"
+      />
+    ))}
+  </motion.div> 
+  </section>   
+ 
+  <div className=" relative z-10 flex flex-col items-center justify-center h-full text-center ">
+    <h1 className="text-white text-5xl font-bold"
+  style={{
+    WebkitTextStroke: "0.5px orange", // Bordo nero di 2px
+    color: "white", // Colore interno del testo
+  }}
+>
+  NeuroScelte</h1>
+    <p className="text-white text-xl mt-4 font-semibold"
+    style={{
+    WebkitTextStroke: "0.25px orange", // Bordo nero di 2px
+    color: "white",
+    fontSize:18, // Colore interno del testo
+  }}>
+      Scopri come il tuo cervello influenza le decisioni di acquisto
+    </p>
+    <Button className="text-white mt-8 bg-orange-500 hover:bg-orange-600"
+    onClick={() => {
+      const section = document.getElementById("intro");
+      section?.scrollIntoView({ behavior: "smooth" });
+    }}
+  >
+      Inizia ora
+    </Button>
+  </div>
+  <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-white z-10" />
+</section>
+
+      {/* Cos'è il Neuromarketing */}
+        <section id="intro" className="py-20 px-6 bg-white text-gray-800">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-semibold mb-4">Cos'è il Neuromarketing?</h2>
+            <p className="text-lg leading-relaxed">
+              Il neuromarketing è una disciplina che unisce neuroscienze, psicologia e marketing per analizzare come il cervello risponde a stimoli legati a pubblicità, packaging e branding. Comprendere queste risposte consente alle aziende di ottimizzare le proprie strategie comunicative, basandosi su ciò che cattura l’attenzione e genera emozione nei consumatori.
+            </p>
+            <img src="/brain-diagram.svg" alt="Schema cervello" className="mt-8 w-full max-w-md mx-auto" />
+          </div>
+        </section>
+        
+      {/* Come funziona il cervello */}
+      <section className="py-20 px-6 bg-white">
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
+          <img src="/tre-cervelli-neuromarketing.png" alt="Funzionamento cervello" className="w-full" />
+          <div className="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition">
+            <h2 className="text-black text-3xl font-semibold mb-4">Le 3 parti del cervello</h2>
+            <ul className="text-black list-disc ml-6 text-lg space-y-2">
+              <li><strong>Rettiliano</strong>: istinto e sopravvivenza</li>
+              <li><strong>Limbico</strong>: emozioni e ricordi</li>
+              <li><strong>Neocorteccia</strong>: logica e linguaggio</li>
+            </ul>
+          </div>
+          <div className="p-6 bg-white rounded-lg shadow-lg hover:shadow-2xl transition ">
+            <h2 className="text-black text-3xl font-semibold mb-4">scopri come le grande azinede analizzano i tuoi comportamenti</h2>
+            <ul className="text-black list-disc ml-6 text-lg space-y-2">
+              <p>Qesto articolo presenta cinque tecniche di neuromarketing, tra cui il monitoraggio delle risposte emotive e l'influenza di colori e suoni. Un esempio pratico è l'uso di <strong>EEG</strong> e eye-tracking da parte di Levi's per analizzare le reazioni dei consumatori alle campagne pubblicitarie.	</p>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Caso Apple */}
+      <section className="py-20 px-6 bg-white text-gray-800">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-semibold mb-4">Il caso Apple: quando il neuromarketing diventa arte</h2>
+            <img src="/jobs.png" alt="Steve Jobs" className="w-64 mx-auto mb-6 rounded shadow-lg" />
+            <p className="text-lg leading-relaxed mb-4">
+              Apple è considerata una delle aziende pioniere nell'utilizzo del neuromarketing. Steve Jobs ha compreso fin dagli inizi che la tecnologia doveva suscitare emozione, ispirazione e senso di appartenenza. I suoi keynote non presentavano solo prodotti, ma veri e propri racconti emozionali.
+            </p>
+            <p className="text-lg leading-relaxed mb-4">
+              Dal packaging minimalista, pensato per stimolare curiosità e piacere nel disimballaggio, alla scelta dei materiali e dei colori nei punti vendita, Apple ha creato un ecosistema esperienziale. Il brand ha anche investito in tecnologie come il facial coding per analizzare le emozioni del pubblico, ottimizzando campagne e interfacce.
+            </p>
+            <p className="text-lg leading-relaxed">
+              Un esempio iconico è lo spot dell’iPad Pro, dove le immagini cosmiche evocano stupore e meraviglia, e solo in chiusura si rivela che sono state osservate con un iPad. Questo storytelling visivo e emozionale eleva il prodotto, trasformando l'acquisto in un atto di espressione personale.
+            </p>
+          </div>
+        </section>
+
+      {/* Attenzione, Consapevolezza, Emozioni */}
+      <section className="py-20 px-6 bg-white text-gray-800">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-semibold mb-8">Attenzione, Consapevolezza ed Emozioni</h2>
+            <p className="text-lg leading-relaxed mb-4">
+              Le decisioni di acquisto sono spesso inconsce e guidate da tre elementi fondamentali: attenzione, consapevolezza ed emozioni. L'attenzione può essere spontanea (bottom-up) o volontaria (top-down), ed è fortemente influenzata da stimoli visivi come packaging e pubblicità. La consapevolezza richiede uno sforzo cognitivo maggiore ed è selettiva, mentre le emozioni sono reazioni automatiche che precedono il pensiero conscio.
+            </p>
+            <p className="text-lg leading-relaxed mb-4">
+              Il celebre esperimento <strong>Coca Cola vs Pepsi</strong> dimostra il potere dei ricordi ed emozioni associati a un brand. Anche se il gusto della Pepsi risultava preferito nei test alla cieca, la maggior parte delle persone dichiarava di preferire Coca Cola quando veniva svelato il marchio, grazie all'efficacia delle sue campagne pubblicitarie emozionali.
+            </p>
+            <div className="grid md:grid-cols-3 gap-8 mt-12">
+              <div className="p-6 bg-orange-400 rounded-lg shadow">
+                <h3 className="text-xl font-semibold mb-2">Attenzione</h3>
+                <p>Può essere catturata da stimoli visivi come cambi di colore o forma del packaging. Essenziale per emergere nel caos comunicativo.</p>
+              </div>
+              <div className="p-6 bg-orange-400 rounded-lg shadow">
+                <h3 className="text-xl font-semibold mb-2">Consapevolezza</h3>
+                <p>Permette di riconoscere un brand e associarlo a valori, esperienze e preferenze, anche a livello inconscio.</p>
+              </div>
+              <div className="p-6 bg-orange-400 rounded-lg shadow">
+                <h3 className="text-xl font-semibold mb-2">Emozioni</h3>
+                <p>Spingono all’azione, restano nella memoria e possono cambiare la percezione del prodotto.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        
+
+      {/* Tecniche e strumenti */}
+      <section className="py-20 px-6 bg-white text-center">
+        <h2 className="text-black text-3xl font-semibold mb-12">Strumenti principali</h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {[
+            { icon: "/eye-tracking.svg", title: "Eye-Tracking", desc: "Analizza dove guardi mentre navighi" },
+            { icon: "/eeg.svg", title: "EEG", desc: "Misura l'attività cerebrale" },
+            { icon: "/facial-coding.svg", title: "Facial Coding", desc: "Rileva micro-espressioni facciali" },
+          ].map((item, idx) => (
+            <div key={idx} className="p-6 rounded-lg shadow-lg hover:shadow-2xl transition">
+              <img src={item.icon} className="w-16 mx-auto mb-4" />
+              <h3 className="text-xl text-black font-bold">{item.title}</h3>
+              <p className="mt-2 text-black">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      
+
+      {/* CTA Finale */}
+      <section className="py-20 px-6 bg-black text-white text-center">
+      <h2 className="text-4xl font-bold mb-4">Pronto a sbloccare il potere nascosto dietro ogni decisione?</h2>
+<p className="text-lg mb-6 max-w-2xl mx-auto">
+  Unisciti al nostro percorso interattivo e scopri come neuroscienze e marketing si incontrano per influenzare ogni tuo acquisto. Testa in prima persona le tecniche più innovative.
+</p>
+<Button className="bg-orange-500 hover:bg-orange-600 text-lg px-6 py-3">Inizia il viaggio</Button>
+
+      </section>
+    </main>
+    </>
   );
 }
